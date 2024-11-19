@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using System.Security.Claims
+@model List<ClinicSystem.Models.Clinic>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Our Clinics</h1>
+   
+    <div class="row">
+        @foreach (var clinic in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="card shadow-lg border-0">
+                    <img class="card-img-top" src="Images/@clinic.ImagePath" alt="Clinic Image" style="height: 250px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-primary">@clinic.Name</h4>
+                        <a href="@Url.Action("ClinicDetails", "Clinic", new { id = clinic.Id })" class="btn btn-outline-primary mt-3 px-5">View Clinic</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
